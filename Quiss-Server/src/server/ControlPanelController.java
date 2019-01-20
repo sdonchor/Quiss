@@ -1,4 +1,4 @@
-package application;
+package server;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -104,6 +104,14 @@ public class ControlPanelController {
     
     @FXML
     void entriesEndClicked(ActionEvent event) {
+
+    }
+    @FXML
+    void roundsCountClicked(ActionEvent event) {
+
+    }
+    @FXML
+    void roundNumberChanged(ActionEvent event) {
 
     }
 

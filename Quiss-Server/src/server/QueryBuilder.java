@@ -1,4 +1,4 @@
-package application;
+package server;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,5 +11,6 @@ public class QueryBuilder {
 	public static PreparedStatement queryGetQuestions() {
 		String sql = "SELECT * FROM questions";//TODO bazę zrób
 		
+		return null;
 	}
 }

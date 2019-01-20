@@ -1,4 +1,4 @@
-package application;
+package server;
 
 public class Timer {
 

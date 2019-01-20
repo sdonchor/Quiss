@@ -1,4 +1,4 @@
-package application;
+package server;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 

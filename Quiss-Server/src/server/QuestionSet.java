@@ -1,9 +1,9 @@
-package application;
+package server;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-public class QuestionsSet {
+public class QuestionSet {
 	private ArrayList<Question> questions = new ArrayList<Question>();
 	
 	public void addQuestion(Question q) {
