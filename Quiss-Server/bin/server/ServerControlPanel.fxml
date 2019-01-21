@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="822.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControlPanelController">
+<AnchorPane fx:id="mainWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="568.0" prefWidth="822.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="server.ControlPanelController">
    <children>
       <SplitPane dividerPositions="0.3226744186046512" prefHeight="478.0" prefWidth="690.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -41,31 +41,31 @@
                                     <HBox alignment="CENTER" spacing="47.0" VBox.vgrow="NEVER">
                                        <children>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="IP" />
-                                          <TextField fx:id="ipInput" />
+                                          <TextField fx:id="ipInput" promptText="default" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER" spacing="35.0" VBox.vgrow="NEVER">
                                        <children>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Port" />
-                                          <TextField fx:id="portInput" />
+                                          <TextField fx:id="portInput" promptText="default" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER" spacing="3.0" VBox.vgrow="NEVER">
                                        <children>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
-                                          <TextField fx:id="usernameInput" />
+                                          <TextField fx:id="usernameInput" promptText="default" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER" spacing="6.0" VBox.vgrow="NEVER">
                                        <children>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-                                          <PasswordField fx:id="passwordInput" />
+                                          <PasswordField fx:id="passwordInput" promptText="default" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER" spacing="7.0" VBox.vgrow="NEVER">
                                        <children>
                                           <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Db name" />
-                                          <TextField fx:id="dbNameInput" />
+                                          <TextField fx:id="dbNameInput" promptText="default" />
                                        </children>
                                     </HBox>
                                     <HBox alignment="CENTER" spacing="6.0" VBox.vgrow="NEVER">
@@ -84,8 +84,11 @@
                                     <Button fx:id="newGameButton" mnemonicParsing="false" onAction="#newGameClicked" prefWidth="200.0" text="Start new game" />
                                     <Button fx:id="stopGame" mnemonicParsing="false" onAction="#stopGameClicked" prefWidth="200.0" text="Stop the game" />
                                     <Separator prefHeight="20.0" prefWidth="200.0" />
-                                    <ComboBox fx:id="questionsSetList" onAction="#questionSetChanged" prefWidth="200.0" />
-                                    <Button fx:id="questionSetButton" mnemonicParsing="false" onAction="#chooseQuestionSet" prefWidth="200.0" text="Choose questions set" />
+                                    <ComboBox fx:id="questionsSetList" onAction="#questionSetChanged" prefWidth="200.0" promptText="Question set" />
+                                    <Button fx:id="questionSetButton" mnemonicParsing="false" onAction="#chooseQuestionSet" prefWidth="200.0" text="Choose question set" />
+                                    <Separator prefHeight="20.0" prefWidth="200.0" />
+                                    <ComboBox fx:id="roundsList" onAction="#roundNumberChanged" prefWidth="200.0" promptText="How many rounds?" />
+                                    <Button fx:id="roundsNumberButton" mnemonicParsing="false" onAction="#roundsCountClicked" prefWidth="200.0" text="Choose rounds number" />
                                     <Separator prefHeight="20.0" prefWidth="200.0" />
                                     <Button fx:id="entriesEndButton" mnemonicParsing="false" onAction="#entriesEndClicked" text="End entries stage" />
                                  </children>
