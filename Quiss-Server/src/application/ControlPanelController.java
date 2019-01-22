@@ -1,4 +1,7 @@
-package server;
+package application;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -35,7 +38,10 @@ public class ControlPanelController {
     private Button stopGame;
 
     @FXML
-    private ComboBox<?> questionsSetList;
+    private ComboBox<QuestionSet> questionsSetList;
+    
+    @FXML
+    private ComboBox<Integer> roundsList;
 
     @FXML
     private Button questionSetButton;
@@ -47,10 +53,6 @@ public class ControlPanelController {
     private TableView<?> playerTable;
 
     
-    @FXML
-    void chooseQuestionSet(ActionEvent event) {
-
-    }
 
     @FXML
     void connectClicked(ActionEvent event) {
@@ -81,15 +83,50 @@ public class ControlPanelController {
     
     	}
     	Main.getDatabaseHandler().connect();
+    	questionsSetList.getItems().clear();
+    	try {
+			ResultSet rs = Main.getDatabaseHandler().executeQuery(QueryBuilder.getQuestionSetsQuery());
+			while(rs.next()) {
+				int id = rs.getInt("qs_id");
+				String name = rs.getString("name");
+				QuestionSet qs = new QuestionSet(id,name);
+				questionsSetList.getItems().add(qs);
+			}
+		} catch (SQLException e) {
+			Console.println("Failed to download question sets.");
+		}
+    	
     }
-    
+    @FXML
+    void chooseQuestionSet(ActionEvent event) {
+    	if(questionsSetList.getValue()==null)
+    	{
+    		Console.println("Choose a question set first.");
+    		return;
+    	}
+    	QuestionSet qs = questionsSetList.getValue();
+    	Main.getCurrentGame().setQuestionSet(qs);
+    	int qsSize=qs.getSize();
+    	roundsList.getItems().clear();
+    	for(int i = 1; i<=qsSize;i++) {
+    		roundsList.getItems().add(i);
+    	}
+    }
+
     @FXML
     public void initialize() {
         Console.setCout(console);
     }
     @FXML
     void newGameClicked(ActionEvent event) {
-
+    	Console.println("Debug: newgmae");
+    	try {
+    		Main.getDatabaseHandler().checkConnection();
+			QueryBuilder.testInsert();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     @FXML
@@ -108,11 +145,16 @@ public class ControlPanelController {
     }
     @FXML
     void roundsCountClicked(ActionEvent event) {
-
-    }
-    @FXML
-    void roundNumberChanged(ActionEvent event) {
-
+    	if(roundsList.getValue()!=null)
+    	{
+	    	int roundsCount = roundsList.getValue();
+	    	Main.getCurrentGame().setRounds(roundsCount);
+	    	
+    	}
+    	else
+    	{
+    		Console.println("Pick number of rounds first.");
+    	}
     }
 
 }

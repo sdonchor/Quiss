@@ -1,4 +1,4 @@
-package server;
+package application;
 	
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +11,7 @@ import javafx.scene.Scene;
 public class Main extends Application {
 	
 	private static DatabaseHandler dbH=null;
-	private static Game currentGame=null;
+	private static Game currentGame=new Game();
 	
 	@Override
     public void start(Stage stage) throws Exception {
@@ -30,6 +30,9 @@ public class Main extends Application {
 	}
 	public static DatabaseHandler getDatabaseHandler() {
 		return dbH;
+	}
+	public static Game getCurrentGame() {
+		return currentGame;
 	}
 	public static void main(String[] args) {
 		launch(args);
