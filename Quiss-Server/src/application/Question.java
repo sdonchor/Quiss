@@ -1,15 +1,14 @@
 package application;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
 public class Question {
 	int id = -1;
 	private String content = null;
-	private String answerA = null;
-	private String answerB = null;
-	private String answerC = null;
-	private String answerD = null;
+	private ArrayList<Answer> answers = new ArrayList<Answer>();
+	private Answer correctAnswer=null;
 	
 	public Question(String content) {
 		this.content=content;
@@ -21,21 +20,21 @@ public class Question {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	/**
-	 * Assigns given answer list's elements to random A/B/C/D positions.
-	 * @param answers list of answers
-	 */
-	public void addAnswers(String[] answers) {
-		if(answers.length!=4)
+	public void setCorrectAnswer(Answer a) {
+		correctAnswer=a;
+	}
+	public void addAnswer(Answer a) {
+		if(answers.size()>=4)
 		{
-			Console.println("Error: invalid answers list.");
+			Console.println("Error: max 4 answers.");
 			return;
 		}
-		Collections.shuffle(Arrays.asList(answers));
-		answerA=answers[0];
-		answerB=answers[1];
-		answerC=answers[2];
-		answerD=answers[3];
+		else
+		{
+			answers.add(a);
+			Collections.shuffle(answers);
+			
+		}
 	}
 	public int getId() {
 		return id;
