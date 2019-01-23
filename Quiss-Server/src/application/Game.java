@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Game {
 	private QuestionSet qs=null;
+	private ArrayList<Question> questionQueue = new ArrayList<Question>();
 	private int rounds = 0;
 	private boolean isStarted=false;
 	private boolean canChangeOptions = true;
@@ -12,9 +13,23 @@ public class Game {
 	public Game() {
 		
 	}
-
+	public void addQuestion(Question q) {
+		questionQueue.add(q);
+	}
+	public ArrayList<Question> getQuestionQueue() {
+		return questionQueue;
+	}
 	public QuestionSet getQuestionSet() {
 		return qs;
+	}
+	public String[] getQuestionsString() {
+		ArrayList<String> output = new ArrayList<String>();
+		for(int i = 0;i<rounds;i++) {
+			output.add(questionQueue.get(i).stringForm());
+		}
+		String[] list = new String[output.size()];
+		output.toArray(list);
+		return list;
 	}
 	public void setQuestionSet(QuestionSet qs) {
 		if(canChangeOptions)
@@ -52,7 +67,12 @@ public class Game {
 	}
 	public void setRounds(int rounds) {
 		Console.println("Set the rounds count to "+rounds+".");
+		
 		this.rounds = rounds;
+		for(int i = 0; i<rounds; i ++) {
+			Question x = qs.popRandomQuestion();
+			addQuestion(x);
+		}
 	}
 	public int getCurrentRound() {
 		return currentRound;

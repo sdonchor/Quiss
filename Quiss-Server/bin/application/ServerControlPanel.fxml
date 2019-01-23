@@ -89,8 +89,6 @@
                                     <Separator prefHeight="20.0" prefWidth="200.0" />
                                     <ComboBox fx:id="roundsList" prefWidth="200.0" promptText="How many rounds?" />
                                     <Button fx:id="roundsNumberButton" mnemonicParsing="false" onAction="#roundsCountClicked" prefWidth="200.0" text="Choose rounds number" />
-                                    <Separator prefHeight="20.0" prefWidth="200.0" />
-                                    <Button fx:id="entriesEndButton" mnemonicParsing="false" onAction="#entriesEndClicked" text="End entries stage" />
                                  </children>
                               </VBox>
                            </children>

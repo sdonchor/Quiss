@@ -17,7 +17,7 @@ public class Server {
 		Console.println("Server initialized on port "+serverPort+". Awaiting connections.");
 		while(true) {
 			Socket socket = serverSocket.accept();
-			Console.println("new connection");
+
 			new ClientThread(socket).start();
 		}
 	}

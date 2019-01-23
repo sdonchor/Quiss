@@ -6,8 +6,6 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -57,7 +55,7 @@
                         <Separator prefWidth="200.0" VBox.vgrow="ALWAYS" />
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <TextArea fx:id="questionBox" editable="false" prefHeight="100.0" prefWidth="488.0" />
+                              <TextArea fx:id="questionBox" editable="false" prefHeight="100.0" prefWidth="488.0" wrapText="true" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -71,10 +69,10 @@
                         </HBox>
                      </children>
                   </VBox>
-                  <Button layoutX="38.0" layoutY="381.0" mnemonicParsing="false" onAction="#chooseAnswerA" prefHeight="115.0" prefWidth="186.0" />
-                  <Button layoutX="38.0" layoutY="538.0" mnemonicParsing="false" onAction="#chooseAnswerB" prefHeight="115.0" prefWidth="186.0" />
-                  <Button layoutX="394.0" layoutY="538.0" mnemonicParsing="false" onAction="#chooseAnswerD" prefHeight="115.0" prefWidth="186.0" />
-                  <Button layoutX="394.0" layoutY="381.0" mnemonicParsing="false" onAction="#chooseAnswerC" prefHeight="115.0" prefWidth="186.0" />
+                  <Button fx:id="buttonA" layoutX="38.0" layoutY="381.0" mnemonicParsing="false" onAction="#chooseAnswerA" prefHeight="115.0" prefWidth="186.0" textAlignment="JUSTIFY" wrapText="true" />
+                  <Button fx:id="buttonB" layoutX="38.0" layoutY="538.0" mnemonicParsing="false" onAction="#chooseAnswerB" prefHeight="115.0" prefWidth="186.0" textAlignment="JUSTIFY" wrapText="true" />
+                  <Button fx:id="buttonD" layoutX="394.0" layoutY="538.0" mnemonicParsing="false" onAction="#chooseAnswerD" prefHeight="115.0" prefWidth="186.0" textAlignment="JUSTIFY" wrapText="true" />
+                  <Button fx:id="buttonC" layoutX="394.0" layoutY="381.0" mnemonicParsing="false" onAction="#chooseAnswerC" prefHeight="115.0" prefWidth="186.0" textAlignment="JUSTIFY" wrapText="true" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
@@ -133,14 +131,18 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="387.0" prefWidth="318.0">
                            <children>
-                              <VBox alignment="CENTER" prefHeight="377.0" prefWidth="318.0" AnchorPane.bottomAnchor="-17.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <VBox alignment="CENTER" prefHeight="377.0" prefWidth="318.0" spacing="50.0" AnchorPane.bottomAnchor="-17.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <TableView prefWidth="297.0" VBox.vgrow="ALWAYS">
-                                      <columns>
-                                        <TableColumn prefWidth="128.0" text="Nick" />
-                                        <TableColumn prefWidth="168.0" text="Score" />
-                                      </columns>
-                                    </TableView>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Your score:">
+                                       <font>
+                                          <Font size="53.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="scoreText" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
+                                       <font>
+                                          <Font size="29.0" />
+                                       </font>
+                                    </Text>
                                  </children>
                               </VBox>
                            </children>
