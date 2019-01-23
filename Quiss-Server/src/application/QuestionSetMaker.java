@@ -1,7 +1,6 @@
 package application;
 
-import java.io.File;
-import java.util.Scanner;
+
 
 public class QuestionSetMaker {
 	
@@ -35,10 +34,10 @@ public class QuestionSetMaker {
 				qs_id=Main.getDatabaseHandler().createQuestionSet(question_set);
 			}
 			int q_id=Main.getDatabaseHandler().createQuestion(content, qs_id, correct_ans);
-			int a1_id=Main.getDatabaseHandler().createAnswer(ans1, q_id);
-			int a2_id=Main.getDatabaseHandler().createAnswer(ans2, q_id);
-			int a3_id=Main.getDatabaseHandler().createAnswer(ans3, q_id);
-			int a4_id=Main.getDatabaseHandler().createAnswer(ans4, q_id);
+			Main.getDatabaseHandler().createAnswer(ans1, q_id);
+			Main.getDatabaseHandler().createAnswer(ans2, q_id);
+			Main.getDatabaseHandler().createAnswer(ans3, q_id);
+			Main.getDatabaseHandler().createAnswer(ans4, q_id);
 			
 		}
 	}

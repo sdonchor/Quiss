@@ -1,0 +1,11 @@
+kategoria;treść pytania;odpowiedź 1; odpowiedź 2; odpowiedź 3; odpowiedź 4;która jest prawidłowa?(1-4);
+
+przykład:
+Zwierzęta;Ile nóg ma szczupak?;Dwadzieścia osiem;sqrt(2);Zależy;Nieskończenie wiele;2;
+
+Pytania domyślne:
+Filozofia;Który dział filozofi traktuje o bycie?;metafizyka;epistemologia;etyka;aksjologia;1 
+Filozofia;Czym jest dajmonion?;ułuda/złuda;cnota;głos sumienia;materia;3
+Filozofia;Wybierz odpowiedz fałszywą:;Sokrates popełnił samobójstwo; sw. Tomasz uważał że dusza i ciało żyją że sobą w harmonii;sw.Augustyn uważał że dusza jest więzieniem ciała; pojęcie prajdedni pochodzi od Arystotelesa;4
+Filozofia;Który ustrój polityczny jest najlepszy według Arystotelesa?;Arystokracja;Tyrania;demokracja;królestwo;4
+Filozofia;Kogo nazywamy ojcem filozofi nowożytnej?;Platon;Sokrates;Kartezjusz;Immanuel Kant;3

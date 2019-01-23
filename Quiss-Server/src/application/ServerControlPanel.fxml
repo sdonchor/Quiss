@@ -121,9 +121,9 @@
                            <children>
                               <TableView fx:id="playerTable" layoutX="88.0" layoutY="17.0" prefHeight="234.0" prefWidth="461.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <columns>
-                                  <TableColumn prefWidth="129.0" text="ID" />
-                                  <TableColumn prefWidth="222.0" text="Username" />
-                                    <TableColumn prefWidth="198.0" text="IP" />
+                                  <TableColumn fx:id="usernameCol" prefWidth="178.0" text="Username" />
+                                    <TableColumn fx:id="ipCol" prefWidth="195.0" text="IP" />
+                                    <TableColumn fx:id="scoreCol" prefWidth="175.0" text="Score" />
                                 </columns>
                                  <contextMenu>
                                     <ContextMenu>

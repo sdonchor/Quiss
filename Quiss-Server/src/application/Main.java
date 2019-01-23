@@ -1,5 +1,7 @@
 package application;
 	
+import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -12,6 +14,7 @@ public class Main extends Application {
 	
 	private static DatabaseHandler dbH=null;
 	private static Game currentGame=new Game();
+	private static ServerThread serverThread = new ServerThread();
 	
 	@Override
     public void start(Stage stage) throws Exception {
@@ -34,7 +37,14 @@ public class Main extends Application {
 	public static Game getCurrentGame() {
 		return currentGame;
 	}
-	public static void main(String[] args) {
-		launch(args);
+	public static ServerThread getServerThread() {
+		return serverThread;
 	}
+	public static void main(String[] args) {
+		
+		launch(args);
+	} 
+
 }
+	
+

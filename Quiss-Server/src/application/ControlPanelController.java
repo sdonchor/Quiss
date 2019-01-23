@@ -7,9 +7,12 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TableColumn;
 
 public class ControlPanelController {
 
@@ -50,10 +53,17 @@ public class ControlPanelController {
     private  TextArea console;
 
     @FXML
-    private TableView<?> playerTable;
+    private TableView<Player> playerTable;
 
+    @FXML
+    private TableColumn<Player, String> usernameCol;
+
+    @FXML
+    private TableColumn<Player, String> ipCol;
     
-
+    @FXML
+    private TableColumn<Player, String> scoreCol;
+    
     @FXML
     void connectClicked(ActionEvent event) {
     	if(ipInput.getText()!=null  && !ipInput.getText().trim().isEmpty())
@@ -116,10 +126,16 @@ public class ControlPanelController {
     @FXML
     public void initialize() {
         Console.setCout(console);
+        usernameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        ipCol.setCellValueFactory(new PropertyValueFactory<>("ip"));
+        scoreCol.setCellValueFactory(new PropertyValueFactory<>("score"));
+        PlayerList.setTable(playerTable);
+
+        
     }
     @FXML
     void newGameClicked(ActionEvent event) {
-    
+    	Main.getServerThread().start();
     }
 
     @FXML
@@ -129,12 +145,12 @@ public class ControlPanelController {
 
     @FXML
     void stopGameClicked(ActionEvent event) {
-    	
+
     }
     
     @FXML
     void entriesEndClicked(ActionEvent event) {
-
+    	
     }
     @FXML
     void roundsCountClicked(ActionEvent event) {

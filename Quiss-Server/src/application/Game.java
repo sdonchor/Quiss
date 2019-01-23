@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Game {
 	private QuestionSet qs=null;
-	private Timer time = null;
 	private int rounds = 0;
 	private boolean isStarted=false;
 	private boolean canChangeOptions = true;
@@ -13,12 +12,7 @@ public class Game {
 	public Game() {
 		
 	}
-	public Timer getTime() {
-		return time;
-	}
-	public void setTime(Timer time) {
-		this.time = time;
-	}
+
 	public QuestionSet getQuestionSet() {
 		return qs;
 	}
