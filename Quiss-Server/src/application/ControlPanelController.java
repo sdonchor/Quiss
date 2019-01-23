@@ -119,14 +119,7 @@ public class ControlPanelController {
     }
     @FXML
     void newGameClicked(ActionEvent event) {
-    	Console.println("Debug: newgmae");
-    	try {
-    		Main.getDatabaseHandler().checkConnection();
-			QueryBuilder.testInsert();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    
     }
 
     @FXML
@@ -136,7 +129,7 @@ public class ControlPanelController {
 
     @FXML
     void stopGameClicked(ActionEvent event) {
-
+    	
     }
     
     @FXML

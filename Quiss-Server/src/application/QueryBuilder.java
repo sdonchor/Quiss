@@ -28,6 +28,12 @@ public class QueryBuilder {
 		stmt.setInt(1, id);
 		return stmt;
 	}
+	public static PreparedStatement getQuestionSetByNameQuery(String name) throws SQLException{
+		String sql = "SELECT * FROM question_sets WHERE name=?";
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		stmt.setString(1, name);
+		return stmt;
+	}
 	public static PreparedStatement getQuestionsQuery(int id) throws SQLException{
 		String sql = "SELECT * FROM questions WHERE qs_id=?";
 		PreparedStatement stmt = connection.prepareStatement(sql);
@@ -46,8 +52,20 @@ public class QueryBuilder {
 		return stmt;
 		
 	}
-	public static PreparedStatement getQuestionsByQuestionSet(int id) throws SQLException {
-		String sql = "Select * FROM questions WHERE qs_id=?";
+	public static PreparedStatement getQuestionsByQuestionSetQuery(int id) throws SQLException {
+		String sql = "SELECT * FROM questions WHERE qs_id=?";
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		stmt.setInt(1, id);
+		return stmt;
+	}
+	public static PreparedStatement getAnswersForQuestionQuery(int id) throws SQLException {
+		String sql = "SELECT * FROM answers WHERE q_id=?";
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		stmt.setInt(1,id);
+		return stmt;
+	}
+	public static PreparedStatement getAnswerByIdQuery(int id) throws SQLException {
+		String sql  = "SELECT * FROM answers WHERE a_id=?";
 		PreparedStatement stmt = connection.prepareStatement(sql);
 		stmt.setInt(1, id);
 		return stmt;
@@ -58,8 +76,45 @@ public class QueryBuilder {
 		stmt.setString(1, ip);
 		return stmt;
 	}
-	
-	
+	public static PreparedStatement banIpQuery(String ip) throws SQLException{
+		String sql = "INSERT INTO banned_ips(ip) VALUES (?)";
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		stmt.setString(1, ip);
+		return stmt;
+	}
+	public static PreparedStatement addQuestionSetQuery(String name) throws SQLException {
+		String sql = "INSERT INTO question_sets (name) VALUES (?)";
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		stmt.setString(1, name);
+		return stmt;
+	}
+	public static PreparedStatement addQuestionQuery(String content, int qs_id, String answer) throws SQLException{
+		String sql = "INSERT INTO questions (content,qs_id,correct_answer) VALUES (?,?,?)";
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		stmt.setString(1, content);
+		stmt.setInt(2, qs_id);
+		stmt.setString(3, answer);
+		return stmt;
+	}
+	public static PreparedStatement addAnswerQuery(String content, int q_id) throws SQLException{
+		String sql = "INSERT INTO answers (content,q_id) VALUES (?,?)";
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		stmt.setString(1, content);
+		stmt.setInt(2, q_id);
+		return stmt;
+	}
+	public static PreparedStatement getQuestionByContent(String content) throws SQLException {
+		String sql = "SELECT * FROM questions WHERE content=?";
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		stmt.setString(1, content);
+		return stmt;
+	}
+	public static PreparedStatement getAnswerByContent(String content) throws SQLException {
+		String sql = "SELECT * FROM answers WHERE content=?";
+		PreparedStatement stmt = connection.prepareStatement(sql);
+		stmt.setString(1, content);
+		return stmt;
+	}
 	//debug
 	public static void testInsert() throws SQLException {
 		String sql = "INSERT INTO question_sets(name) VALUES (?)";
@@ -70,4 +125,5 @@ public class QueryBuilder {
         stmt.setString(1, time);
 		stmt.executeUpdate();
 	}
+	
 }

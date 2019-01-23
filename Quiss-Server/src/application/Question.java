@@ -1,17 +1,18 @@
 package application;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 
 public class Question {
 	int id = -1;
+	int qsId = -1;
 	private String content = null;
 	private ArrayList<Answer> answers = new ArrayList<Answer>();
 	private Answer correctAnswer=null;
 	
-	public Question(String content) {
+	public Question(int id, String content, int qsId, String correctAnswer) {
 		this.content=content;
+		this.id = id;
 	}
 	
 	public String getContent() {
@@ -22,6 +23,9 @@ public class Question {
 	}
 	public void setCorrectAnswer(Answer a) {
 		correctAnswer=a;
+	}
+	public Answer getCorrectAnswer() {
+		return correctAnswer;
 	}
 	public void addAnswer(Answer a) {
 		if(answers.size()>=4)

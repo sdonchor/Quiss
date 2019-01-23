@@ -3,7 +3,6 @@ package application;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class QuestionSet {
 	private int id = -1;
@@ -17,13 +16,21 @@ public class QuestionSet {
 	}
 	public void fillQuestionSet() {
 		try {
-			ResultSet rs = Main.getDatabaseHandler().executeQuery(QueryBuilder.getQuestionsByQuestionSet(id));
+			//get questions from db
+			ResultSet rs = Main.getDatabaseHandler().executeQuery(QueryBuilder.getQuestionsByQuestionSetQuery(id));
 			while(rs.next()) {
 				int qid = rs.getInt("q_id");
 				String content = rs.getString("content");
-				String[] answers = {rs.getString("answer1"),rs.getString("answer2"),rs.getString("answer3"),rs.getString("answer4")};
-				Question q = new Question(content);
-				q.addAnswers(answers);
+				String correct_answer = rs.getString("correct_answer");
+				Question q = new Question(qid, content,this.id,correct_answer);
+				//get answers from db
+				ResultSet as = Main.getDatabaseHandler().executeQuery(QueryBuilder.getAnswersForQuestionQuery(qid));
+				while(as.next()) {
+					int aid = as.getInt("a_id");
+					String aContent = as.getString("content");
+					Answer ans = new Answer(aid,aContent,qid);
+					q.addAnswer(ans);
+				}
 				addQuestion(q);
 				//Console.println(""+q);//debug
 			}

@@ -6,7 +6,6 @@ import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class DatabaseHandler {
 	private Connection connect = null;
@@ -98,5 +97,77 @@ public class DatabaseHandler {
 		} catch (SQLException e) {
 			Console.println("Failed to close database connection.");
 		}
+	}
+	//Table specific operations
+	public int getIdOfQuestionSet(String name) {
+		int qs_id = -1;
+		try {
+			ResultSet rs = executeQuery(QueryBuilder.getQuestionSetByNameQuery(name));
+			if(rs.next()) {
+				qs_id = rs.getInt("qs_id");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return qs_id;
+	}
+	public int getIdOfQuestion(String content) {
+		int q_id = -1;
+		try {
+			ResultSet rs = executeQuery(QueryBuilder.getQuestionByContent(content));
+			if(rs.next()) {
+				q_id = rs.getInt("q_id");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return q_id;
+	}
+	public int getIdOfAnswer(String content) {
+		int a_id = -1;
+		try {
+			ResultSet rs = executeQuery(QueryBuilder.getAnswerByContent(content));
+			if(rs.next()) {
+				a_id = rs.getInt("a_id");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return a_id;
+	}
+	public int createQuestionSet(String name) {
+		int qs_id=-1;
+		try {
+			executeUpdate(QueryBuilder.addQuestionSetQuery(name));
+			qs_id = getIdOfQuestionSet(name);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return qs_id;
+	}
+	public int createAnswer(String content, int q_id) {
+		int a_id=-1;
+		try {
+			executeUpdate(QueryBuilder.addAnswerQuery(content,q_id));
+			a_id = getIdOfAnswer(content);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return a_id;
+	}
+	public int createQuestion(String content,int qs_id, String answer) {
+		int q_id=-1;
+		try {
+			executeUpdate(QueryBuilder.addQuestionQuery(content,qs_id, answer));
+			q_id = getIdOfQuestion(content);
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return q_id;
 	}
 }

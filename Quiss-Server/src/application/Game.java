@@ -60,5 +60,11 @@ public class Game {
 		Console.println("Set the rounds count to "+rounds+".");
 		this.rounds = rounds;
 	}
+	public int getCurrentRound() {
+		return currentRound;
+	}
+	public void setCurrentRound(int currentRound) {
+		this.currentRound = currentRound;
+	}
 	
 }
